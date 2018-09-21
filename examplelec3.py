@@ -14,8 +14,8 @@ def lemons():
 def plants():
     ## Add code here
     flavor_options = ["sugary", "very sugary", "mega ultra sugary", "bitter", "super bitter", "tasteless"]
-    name = "matthew"
-    name_len = 7
+    name = request.args.get('name', 'not found')
+    name_len = len(name)
     return render_template('results.html',flavors=flavor_options, name_len=name_len, name=name)
 
 
