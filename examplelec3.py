@@ -10,12 +10,17 @@ def lemons():
     # Add code -- what type should options hold?
     return render_template('seeform.html',title=title_var, lst_stuff=options)
 
-@app.route('/apples')
+@app.route('/apples', method = ['GET'])
 def plants():
     ## Add code here
-    flavor_options = ["sugary", "very sugary", "mega ultra sugary", "bitter", "super bitter", "tasteless"]
-    name = request.args.get('name', 'not found')
-    name_len = len(name)
+    if request.method == 'GET'
+        name = request.args.get('name', 'not found') #.args is essentially the dictionary response from the form request.
+        name_len = len(name)
+        flavor_options = []
+        for x in request.args:
+            if x != 'name':
+                flavor_options.append(request.args.get(x))
+
     return render_template('results.html',flavors=flavor_options, name_len=name_len, name=name)
 
 
